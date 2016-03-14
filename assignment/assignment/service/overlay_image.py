@@ -8,8 +8,6 @@ class OverlayImage:
 
 
     def _overlap(self):
-
-        # TODO: add aspect ratio as an argument
         base_w = (self.image.size[0]/9) / float(self.watermark.size[0])
         base_h = (self.image.size[0]/12) / float(self.watermark.size[1])
 
@@ -18,7 +16,7 @@ class OverlayImage:
 
 
         self.watermark = self.watermark.resize((logo_w, logo_h), Image.ANTIALIAS)
-
+        #To set to top right corenr as per requirement
         offset_x = (self.image.size[0] - self.watermark.size[0]) - 10
         offset_y = 0
 
@@ -30,6 +28,5 @@ class OverlayImage:
     	buffer = cStringIO.StringIO()
         self._overlap()
         self.composite.save(buffer, "PNG")
-        self.composite.save('arpit', "PNG")
         return buffer
 

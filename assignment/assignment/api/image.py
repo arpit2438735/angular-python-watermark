@@ -13,4 +13,4 @@ def convert(request):
             overlay_image = OverlayImage(request.FILES['image'], request.FILES['watermark'])
             return HttpResponse(base64.b64encode(overlay_image.convert().getvalue()), content_type="image/png")
 
-    return HttpResponse(json.dumps({}))
+    return HttpResponse(json.dumps({'error': 'Method not allowed'}))

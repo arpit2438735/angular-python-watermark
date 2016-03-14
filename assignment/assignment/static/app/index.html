@@ -34,8 +34,17 @@
         <p class="help-block">Watermark should be less than uploaded image</p>
       </div>
         <button type="submit" class="btn btn-default" ng-click="vm.upload()">Convert & Download</button>
-      <div class="row">
-            <img ng-src="{$'data:image/png;base64,'+vm.newImage$}" ng-if="vm.newImage" class="img-responsive" >
+      
+      <div class="alert alert-danger" role="alert" ng-if="vm.error">
+        <p>You forget to attach Image or Watermark</p>
+      </div>
+
+      <div class="alert alert-info" role="alert" ng-if="vm.info">
+        <p>Uploading file to server and getting new image.
+      </div>
+      <div class="row watermark" ng-if="vm.newImage">
+            <p class="help-block">Below is the generated image.Right click on it and download</p>
+            <img ng-src="{$'data:image/png;base64,'+vm.newImage$}" class="img-responsive" >
       </div>
     </div>
 

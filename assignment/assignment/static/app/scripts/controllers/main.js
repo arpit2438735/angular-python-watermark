@@ -8,7 +8,7 @@
  * Controller of the staticApp
  */
 
-var MainController = function ($http, $window) {
+var MainController = function ($http) {
 	var formData = new FormData();
 	var vm = this;
 
@@ -24,16 +24,19 @@ var MainController = function ($http, $window) {
 
 
 	vm.upload = function () {
+		vm.info = true;
+
 		$http.post('/api/image/convert', formData, {
 			transformRequest: angular.identity,
 			headers: {'Content-Type': undefined}
 		}).then(function (response) {
+			vm.info = false;
 			vm.newImage = response.data;
 		});
 	}
 };
 
-MainController.$inject = ['$http', '$window'];
+MainController.$inject = ['$http'];
 
 angular.module('staticApp')
   .controller('MainController', MainController);
