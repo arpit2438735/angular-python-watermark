@@ -1,7 +1,7 @@
 
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
-from assignment.service.overlay_image import OverlayImage
+from assignment.assignment.service.overlay_image import OverlayImage
 
 import json
 import base64

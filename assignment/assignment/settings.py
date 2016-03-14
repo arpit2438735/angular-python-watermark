@@ -37,8 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'assignment.api',
-    'assignment.service'
+    'assignment.assignment.api',
+    'assignment.assignment.service'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -52,7 +52,7 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'assignment.urls'
+ROOT_URLCONF = 'assignment.assignment.urls'
 
 TEMPLATES = [
     {

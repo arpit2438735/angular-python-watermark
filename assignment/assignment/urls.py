@@ -20,5 +20,5 @@ from django.conf import settings
 
 urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name = 'app/index.html'), name= 'home'),
-    url(r'^api/image/convert$', 'assignment.api.image.convert'),
+    url(r'^api/image/convert$', 'assignment.assignment.api.image.convert'),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
