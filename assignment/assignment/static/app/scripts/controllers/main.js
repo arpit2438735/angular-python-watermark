@@ -10,8 +10,9 @@
 
 var MainController = function ($http) {
 	var formData = new FormData();
+	var vm = this;
 
-	this.uploadImage = function (file, isWaterMark) {
+	vm.uploadImage = function (file, isWaterMark) {
 
 		if(isWaterMark) {
 			formData.append('watermark', file.files[0]);
@@ -22,12 +23,12 @@ var MainController = function ($http) {
 	};
 
 
-	this.upload = function () {
+	vm.upload = function () {
 		$http.post('/api/image/convert', formData, {
 			transformRequest: angular.identity,
 			headers: {'Content-Type': undefined}
 		}).then(function (response) {
-
+			vm.newImage = response.data;
 		});
 	}
 };

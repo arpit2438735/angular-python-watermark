@@ -10,9 +10,6 @@ def convert(request):
     if request.method == 'POST':
         if request.FILES['image'] and request.FILES['watermark'] :
             overlay_image = OverlayImage(request.FILES['image'], request.FILES['watermark'])
+            return HttpResponse(overlay_image.convert().getvalue(), content_type="image/png")
 
-            print overlay_image.convert()
-
-
-
-    return HttpResponse(json.dumps({'foo': 'bar'}))
+    return HttpResponse(json.dumps({}))
