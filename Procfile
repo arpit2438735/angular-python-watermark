@@ -1,1 +1,2 @@
-web: gunicorn assignment.assignment.wsgi:application --log-file -
+web: gunicorn assignment.wsgi:application --log-file -
+
