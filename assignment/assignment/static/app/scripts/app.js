@@ -10,4 +10,8 @@
  */
 angular
   .module('staticApp', [
-  ]);
+  ])
+  .config(function($interpolateProvider) {
+    $interpolateProvider.startSymbol('{$');
+    $interpolateProvider.endSymbol('$}');
+});

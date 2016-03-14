@@ -1,5 +1,5 @@
 from PIL import Image, ImageEnhance
-import StringIO
+import cStringIO
 
 class OverlayImage:
     def __init__(self, image, watermark):
@@ -27,7 +27,7 @@ class OverlayImage:
         self.composite = Image.composite(self.overlay_image, self.image, self.overlay_image)
 
     def convert(self):
-    	buffer = StringIO.StringIO()
+    	buffer = cStringIO.StringIO()
         self._overlap()
         self.composite.save(buffer, "PNG")
         self.composite.save('arpit', "PNG")

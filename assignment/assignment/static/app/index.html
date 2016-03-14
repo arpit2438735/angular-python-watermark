@@ -34,8 +34,9 @@
         <p class="help-block">Watermark should be less than uploaded image</p>
       </div>
         <button type="submit" class="btn btn-default" ng-click="vm.upload()">Convert & Download</button>
-
-        <img data-ng-src="data:image/png;{{vm.newImage}}" ng-if="vm.newImage">
+      <div class="row">
+            <img ng-src="{$'data:image/png;base64,'+vm.newImage$}" ng-if="vm.newImage" class="img-responsive" >
+      </div>
     </div>
 
 

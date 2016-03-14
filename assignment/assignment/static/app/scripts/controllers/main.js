@@ -8,7 +8,7 @@
  * Controller of the staticApp
  */
 
-var MainController = function ($http) {
+var MainController = function ($http, $window) {
 	var formData = new FormData();
 	var vm = this;
 
@@ -33,7 +33,7 @@ var MainController = function ($http) {
 	}
 };
 
-MainController.$inject = ['$http'];
+MainController.$inject = ['$http', '$window'];
 
 angular.module('staticApp')
   .controller('MainController', MainController);
