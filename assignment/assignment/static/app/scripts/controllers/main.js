@@ -9,29 +9,46 @@
  */
 
 var MainController = function ($http) {
-	var formData = new FormData();
 	var vm = this;
+
+	var formData = new FormData();
+	var image = 'image';
+	var waterMark = 'watermark';
+	var files = {};
 
 	vm.uploadImage = function (file, isWaterMark) {
 
 		if(isWaterMark) {
-			formData.append('watermark', file.files[0]);
+			files[waterMark] = file.files[0];
 			return;
 		}
 
-		formData.append('image', file.files[0]);
+		files[image] = file.files[0];
 	};
 
 
 	vm.upload = function () {
+		vm.error = false;
+		vm.serverIssue = false;
+		if (Object.keys(files).length !== 2) {
+			vm.error = true;
+			return;
+		}
+
+		formData.append(waterMark, files[waterMark]);
+		formData.append(image, files[image]);
+		files = {};
 		vm.info = true;
 
 		$http.post('/api/image/convert', formData, {
 			transformRequest: angular.identity,
 			headers: {'Content-Type': undefined}
-		}).then(function (response) {
+		}).success(function (response) {
 			vm.info = false;
-			vm.newImage = response.data;
+			vm.newImage = response;
+		}).error(function() {
+			vm.serverIssue = true;
+			vm.info = false;
 		});
 	}
 };

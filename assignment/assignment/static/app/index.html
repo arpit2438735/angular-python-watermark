@@ -23,6 +23,7 @@
     <!-- Add your site or application content here -->
 
     <div class="container" ng-controller="MainController as vm">
+      <h1 class="text-center">Welcome to Watermark on an Image</h1>
       <div class="form-group">
         <label>Upload Image</label>
         <input type="file" onchange="angular.element(this).scope().vm.uploadImage(this)" accept="image/*">
@@ -40,8 +41,12 @@
       </div>
 
       <div class="alert alert-info" role="alert" ng-if="vm.info">
-        <p>Uploading file to server and getting new image.
+        <p>Uploading file to server and getting new image.</p>
       </div>
+
+        <div class="alert alert-info" role="alert" ng-if="vm.serverIssue">
+            <p>Looks like there is some issue from our end.</p>
+        </div>
       <div class="row watermark" ng-if="vm.newImage">
             <p class="help-block">Below is the generated image.Right click on it and download</p>
             <img ng-src="{$'data:image/png;base64,'+vm.newImage$}" class="img-responsive" >
