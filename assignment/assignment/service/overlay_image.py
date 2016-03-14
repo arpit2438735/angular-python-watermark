@@ -9,7 +9,7 @@ class OverlayImage:
 
     def _overlap(self):
         base_w = (self.image.size[0]/9) / float(self.watermark.size[0])
-        base_h = (self.image.size[0]/12) / float(self.watermark.size[1])
+        base_h = (self.image.size[0]/3) / float(self.watermark.size[1])
 
         logo_w = int(float(self.watermark.size[0]) * float(base_h))
         logo_h = int(float(self.watermark.size[1]) * float(base_w))
